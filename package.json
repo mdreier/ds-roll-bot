@@ -1,7 +1,20 @@
 {
-  "name": "dsrolldice",
+  "name": "ds-roll-dice",
   "version": "0.0.1",
-  "description": "Generate a Microsoft Teams application.",
+  "description": "A dice roller bot for Microsoft Teams.",
+  "homepage": "https://github.com/mdreier/ds-roll-bot",
+  "bugs": {
+    "url": "https://github.com/mdreier/ds-roll-bot/issues"
+  },
+  "license": "",
+  "author": {
+    "name": "Martin Dreier",
+    "email": "martin@martindreier.de"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mdreier/ds-roll-bot.git"
+  },
   "scripts": {
     "start": "node dist/server.js",
     "build": "gulp build",
