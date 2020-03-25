@@ -3,6 +3,7 @@ import * as debug from "debug";
 import { DialogSet, DialogState } from "botbuilder-dialogs";
 import { StatePropertyAccessor, CardFactory, TurnContext, MemoryStorage, ConversationState, ActivityTypes, TeamsActivityHandler } from "botbuilder";
 import HelpDialog from "./dialogs/HelpDialog";
+import RollDialog from "./dialogs/RollDialog";
 import WelcomeCard from "./dialogs/WelcomeDialog";
 
 // Initialize debug logging module
@@ -33,6 +34,7 @@ export class Roll extends TeamsActivityHandler {
         this.dialogState = conversationState.createProperty("dialogState");
         this.dialogs = new DialogSet(this.dialogState);
         this.dialogs.add(new HelpDialog("help"));
+        this.dialogs.add(new RollDialog("roll"));
 
         // Set up the Activity processing
 
@@ -42,14 +44,12 @@ export class Roll extends TeamsActivityHandler {
                 case ActivityTypes.Message:
                     let text = TurnContext.removeRecipientMention(context.activity);
                     text = text.toLowerCase();
-                    if (text.startsWith("hello")) {
-                        await context.sendActivity("Oh, hello to you as well!");
-                        return;
-                    } else if (text.startsWith("help")) {
+                    if (text.startsWith("help")) {
                         const dc = await this.dialogs.createContext(context);
                         await dc.beginDialog("help");
                     } else {
-                        await context.sendActivity(`I\'m terribly sorry, but my master hasn\'t trained me to do anything yet...`);
+                        const dc = await this.dialogs.createContext(context);
+                        await dc.beginDialog("roll");
                     }
                     break;
                 default:
