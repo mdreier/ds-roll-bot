@@ -100,6 +100,17 @@ IF EXIST "%DEPLOYMENT_SOURCE%\package.json" (
   IF !ERRORLEVEL! NEQ 0 goto error
   popd
 )
+
+:: Bugfix - recompile node-sass
+:: See https://github.com/pnp/generator-teams/issues/79 and https://stackoverflow.com/questions/41874420/express-app-with-node-sass-on-azure-app-service
+IF EXIST "%DEPLOYMENT_SOURCE%\package.json" (
+  echo Rebuilding node-sass
+  pushd "%DEPLOYMENT_SOURCE%"
+  call :ExecuteCmd !NPM_CMD! rebuild node-sass
+  IF !ERRORLEVEL! NEQ 0 goto error
+  popd
+)
+
 :: 3. Build it
 IF EXIST "%DEPLOYMENT_SOURCE%\package.json" (
   pushd "%DEPLOYMENT_SOURCE%"
