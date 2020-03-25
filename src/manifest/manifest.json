@@ -3,7 +3,7 @@
   "manifestVersion": "1.5",
   "id": "4eef0f50-6e8f-11ea-bf45-758064e62985",
   "version": "0.0.1",
-  "packageName": "dsrolldice",
+  "packageName": "ds-roll-dice",
   "developer": {
     "name": "Martin Dreier",
     "websiteUrl": "https://{{HOSTNAME}}",
@@ -15,8 +15,8 @@
     "full": "Dice Roller"
   },
   "description": {
-    "short": "TODO: add short description here",
-    "full": "TODO: add full description here"
+    "short": "A dice roller bot for Microsoft Teams.",
+    "full": "Looking to play a game, or making some tough decisions? Introduce some randomness into your team with this interactive dice roller."
   },
   "icons": {
     "outline": "icon-outline.png",
